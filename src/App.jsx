@@ -1,28 +1,22 @@
 // import react router dom
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import pages
 import { Home, ProductDetails } from "./pages";
+import { Footer, Header, Sidebar } from "./components";
 
 const App = () => {
-  // implement the router
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route path="/" element={<Home />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-      </>
-    )
-  );
-
   return (
     <div className="overflow-hidden">
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <Header />
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="product/:id" element={<ProductDetails />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 };
