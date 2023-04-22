@@ -9,9 +9,6 @@ import {
 // import pages
 import { Home, ProductDetails } from "./pages";
 
-// import components
-import { Header, Footer } from "./components";
-
 const App = () => {
   // implement the router
   const router = createBrowserRouter(
