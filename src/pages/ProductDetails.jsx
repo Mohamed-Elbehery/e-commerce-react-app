@@ -8,12 +8,15 @@ import { useParams } from "react-router-dom";
 import { CartContext } from "../contexts/CartContext"; // cart context
 import { ProductContext } from "../contexts/ProductContext"; // product context
 import { Header } from "../components";
+import { useState } from "react";
 
 const ProductDetails = () => {
   // get the product id from the url
   const { id } = useParams();
   const { products } = useContext(ProductContext);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, removeFromCart } = useContext(CartContext);
+
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
 
   // get product according to the id
   const product = products.find((item) => +item.id === +id);
@@ -55,10 +58,18 @@ const ProductDetails = () => {
               </span>
               <p className="mb-8">{description}</p>
               <button
-                onClick={() => addToCart(product, id)}
+                onClick={() => {
+                  if (!isAddedToCart) {
+                    addToCart(product, +id);
+                    setIsAddedToCart(true);
+                  } else {
+                    removeFromCart(+id);
+                    setIsAddedToCart(false);
+                  }
+                }}
                 className="bg-primary py-4 px-8 text-white"
               >
-                Add to cart
+                {!isAddedToCart ? "Add to cart" : "Remove from cart"}
               </button>
             </div>
           </div>
