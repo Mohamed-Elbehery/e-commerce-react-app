@@ -16,7 +16,7 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
   // destructure sidebar context
   const { isOpen, handleClose } = useContext(SidebarContext);
-  const { cart, clearCart, total } = useContext(CartContext);
+  const { cart, clearCart, total, itemAmount } = useContext(CartContext);
 
   return (
     <div
@@ -26,7 +26,7 @@ const Sidebar = () => {
     >
       <div className="flex items-center justify-between py-6 border-b">
         <p className="uppercase text-sm font-semibold">
-          Shopping Bag ({cart.length})
+          Shopping Bag {itemAmount}
         </p>
         <div
           onClick={handleClose}
