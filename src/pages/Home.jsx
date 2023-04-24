@@ -1,7 +1,7 @@
 // import context
 import { useContext } from "react";
-// import product context
-import { ProductContext } from "../contexts/ProductContext";
+// import contexts
+import { ProductContext } from "../contexts/ProductContext"; // product context
 // import components
 import { Hero, Product } from "../components";
 
@@ -14,6 +14,7 @@ const Home = ({ children }) => {
       product.category === "men's clothing" ||
       product.category === "women's clothing"
   );
+  // get cart items
 
   return (
     <>

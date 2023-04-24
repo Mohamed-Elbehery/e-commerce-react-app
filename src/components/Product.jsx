@@ -1,5 +1,5 @@
 // import "useContext" Hook
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 // import link
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,14 @@ const Product = ({ product }) => {
   // destructure the product
   const { id, image, category, title, price } = product;
   // destructure the cart context
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cart } = useContext(CartContext);
+
+  // local storage
+  useEffect(() => {
+    if (cart.length >= 0) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart]);
 
   return (
     <div>
