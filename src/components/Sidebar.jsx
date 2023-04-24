@@ -1,5 +1,5 @@
 // import "useContext" Hook
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 
 // import icons
 import { IoMdArrowForward } from "react-icons/io";
@@ -16,15 +16,7 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
   // destructure sidebar context
   const { isOpen, handleClose } = useContext(SidebarContext);
-  const { cart, clearCart, total, itemAmount, setCart } =
-    useContext(CartContext);
-
-  // set the cart with the local storage
-  useEffect(() => {
-    if (localStorage.cart) {
-      setCart(JSON.parse(localStorage.cart));
-    }
-  }, [setCart]);
+  const { cart, clearCart, total, itemAmount } = useContext(CartContext);
 
   return (
     <div
